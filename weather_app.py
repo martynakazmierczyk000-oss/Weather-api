@@ -15,7 +15,16 @@ f'\n4. Warunki pogodowe'
 f'\n5. Wszystkie informacje'
 f'\nPodaj numer opcji: ')
 
-user_choice=int(input(input_message))
+#Zabezpieczenie przed wpisaniem wartości niebędącej liczbą
+while True:
+    try: 
+        user_choice=int(input(input_message))
+        if user_choice>=1 and user_choice<=5:
+            break
+        else:
+            print('Nieprawidłowy wybór. Proszę wybrać numer od 1 do 5.')
+    except ValueError:
+        print('Nieprawidłowy wybór. Proszę wybrać numer od 1 do 5.')
 
 #Zabezpieczenie przed wpisaniem wartości spoza zakresu
 while user_choice<1 or user_choice>5:
