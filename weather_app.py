@@ -2,10 +2,12 @@ import requests
 #Dodawanie naszego klucza API
 
 api_key='912b2e482a824a7688b81205250612'
-city='Warszawa' 
+
+#Wybór miasta do sprawdzenia pogody
+city=input('Podaj nazwę miasta, dla którego chcesz sprawdzić pogodę:')
 
 #Utworzenie zapytania do API OpenWeatherMap
-url=f'https://api.weatherapi.com/v1/current.json?key=912b2e482a824a7688b81205250612&q=Warszawa&aqi=yes'
+url=f'https://api.weatherapi.com/v1/current.json?key=912b2e482a824a7688b81205250612&q={city}&aqi=yes'
 
 #Wykonuje zapytanie GET i pobierzemy dane w formacie JSON
 response=requests.get(url)
