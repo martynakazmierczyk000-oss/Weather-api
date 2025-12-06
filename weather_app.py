@@ -1,13 +1,15 @@
 import requests
+import unidecode
 #Dodawanie naszego klucza API
 
 api_key='912b2e482a824a7688b81205250612'
 
 #Wybór miasta do sprawdzenia pogody
 city=input('Podaj nazwę miasta, dla którego chcesz sprawdzić pogodę:')
+city_unidecoded=unidecode.unidecode(city)
 
 #Osobny komunikat 
-input_message= (f'Wybierz co chcesz wyświetlić dla {city}: '
+input_message= (f'Wybierz co chcesz wyświetlić dla {city_unidecoded}: '
 f'\n1. Temperatura'
 f'\n2. Wilgotność'
 f'\n3. Ciśnienie'
@@ -32,7 +34,7 @@ while user_choice<1 or user_choice>5:
     user_choice=int(input(input_message))
 
 #Utworzenie zapytania do API OpenWeatherMap
-url=f'https://api.weatherapi.com/v1/current.json?key=912b2e482a824a7688b81205250612&q={city}&aqi=yes'
+url=f'https://api.weatherapi.com/v1/current.json?key=912b2e482a824a7688b81205250612&q={city_unidecoded}&aqi=yes'
 
 #Wykonuje zapytanie GET i pobierzemy dane w formacie JSON
 response=requests.get(url)
