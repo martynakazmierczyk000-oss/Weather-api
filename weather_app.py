@@ -6,13 +6,21 @@ api_key='912b2e482a824a7688b81205250612'
 #Wybór miasta do sprawdzenia pogody
 city=input('Podaj nazwę miasta, dla którego chcesz sprawdzić pogodę:')
 
-user_choice=int(input(f'Wybierz co chcesz wyświetlić dla {city}: '
-                      f'\n1. Temperatura'
-                      f'\n2. Wilgotność'
-                      f'\n3. Ciśnienie'
-                      f'\n4. Warunki pogodowe'
-                      f'\n5. Wszystkie informacje'
-                      f'\nPodaj numer opcji: '))
+#Osobny komunikat 
+input_message= (f'Wybierz co chcesz wyświetlić dla {city}: '
+f'\n1. Temperatura'
+f'\n2. Wilgotność'
+f'\n3. Ciśnienie'
+f'\n4. Warunki pogodowe'
+f'\n5. Wszystkie informacje'
+f'\nPodaj numer opcji: ')
+
+user_choice=int(input(input_message))
+
+#Zabezpieczenie przed wpisaniem wartości spoza zakresu
+while user_choice<1 or user_choice>5:
+    print('Nieprawidłowy wybór. Proszę wybrać numer od 1 do 5.')
+    user_choice=int(input(input_message))
 
 #Utworzenie zapytania do API OpenWeatherMap
 url=f'https://api.weatherapi.com/v1/current.json?key=912b2e482a824a7688b81205250612&q={city}&aqi=yes'
